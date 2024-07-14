@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+        }
+
+        section {
+            position: relative;
+            width: 350px;
+            height: 450px;
+            background: linear-gradient(to right, #ffffff, #f0f0f0);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .signin {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signin .content {
+            position: relative;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .signin .content h2 {
+            font-size: 24px;
+            color: #333;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .signin .content .form {
+            position: relative;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .signin .content .form .inputBox {
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .signin .content .form .inputBox input {
+            position: relative;
+            width: 100%;
+            padding: 10px 20px;
+            background: rgba(240, 240, 240, 0.9);
+            outline: none;
+            border: none;
+            color: #333;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            border-radius: 30px;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .signin .content .form .inputBox input::placeholder {
+            color: #888;
+        }
+
+        .signin .content .form .inputBox i {
+            position: absolute;
+            left: 20px;
+            color: #888;
+            font-size: 18px;
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .signin .content .form .inputBox input:focus ~ i,
+        .signin .content .form .inputBox input:valid ~ i {
+            transform: translateY(-20px);
+            font-size: 12px;
+            color: #ff105f;
+        }
+
+        .signin .content .form .links {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .signin .content .form .links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .signin .content .form .inputBox input[type="submit"] {
+            background: #007bff;
+            border: none;
+            color: #fff;
+            max-width: 100px;
+            cursor: pointer;
+            transition: 0.5s;
+            box-shadow: none;
+        }
+
+        .signin .content .form .inputBox input[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+        #shadow-host-companion {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<section>
+    <div class="signin">
+        <div class="content">
+            <h2>Sign In</h2>
+            <div class="form">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                      <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+                <form action="{{ url_for('login') }}" method="post">
+                    <i>Username</i>
+                    <div class="inputBox">
+                        <input type="text" name="username" required>
+                    </div>
+                    <i>Password</i>
+                    <div class="inputBox">
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

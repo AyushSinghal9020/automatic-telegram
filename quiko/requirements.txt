@@ -1,0 +1,11 @@
+flask
+faiss-cpu
+langchain
+langchain_community
+langchain_openai
+openai
+PyPDF2
+halo
+scikit-learn
+boto3
+groq
